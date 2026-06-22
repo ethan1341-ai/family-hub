@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(249 250 251);
+  color: rgb(17 24 39);
+}
+
+a:not([class*="text-"]) {
+  color: rgb(99 102 241);
+  text-decoration-color: transparent;
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+a:not([class*="text-"]):hover {
+  color: rgb(236 72 153);
+}
+
+button {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  transition-duration: 200ms;
+}
+
+.container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
