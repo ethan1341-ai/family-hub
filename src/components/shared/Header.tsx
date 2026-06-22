@@ -2,22 +2,37 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { supabase } from '@/lib/supabase'
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userEmail, setUserEmail] = useState<string>('')
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
     checkAuth()
   }, [])
 
-  const checkAuth = () => {
+  const checkAuth = async () => {
     try {
       const token = localStorage.getItem('session_token')
       if (token) {
         setIsLoggedIn(true)
         const email = localStorage.getItem('user_email')
-        if (email) setUserEmail(email)
+        if (email) {
+          setUserEmail(email)
+
+          // 檢查是否是管理員
+          const { data } = await supabase
+            .from('users')
+            .select('is_admin')
+            .eq('email', email)
+            .single()
+
+          if (data?.is_admin) {
+            setIsAdmin(true)
+          }
+        }
       } else {
         setIsLoggedIn(false)
       }
@@ -91,6 +106,14 @@ export default function Header() {
             >
               🌳 家族樹
             </Link>
+            {isAdmin && (
+              <Link
+                href="/admin/users"
+                className="text-gray-700 hover:text-purple-600 font-medium transition pb-1 border-b-2 border-transparent hover:border-purple-600"
+              >
+                ⚙️ 管理
+              </Link>
+            )}
           </nav>
         )}
       </div>

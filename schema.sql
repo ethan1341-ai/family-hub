@@ -4,6 +4,7 @@ CREATE TABLE users (
   email TEXT UNIQUE,
   auth_provider TEXT NOT NULL,
   is_admin BOOLEAN DEFAULT FALSE,
+  is_super_admin BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT NOW()
 );
 
