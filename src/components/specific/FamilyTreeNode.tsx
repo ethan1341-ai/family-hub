@@ -17,11 +17,11 @@ export default function FamilyTreeNode({
   const [isExpanded, setIsExpanded] = useState(false)
 
   // 找到相關的家族成員
-  const father = allMembers.find(m => m.id === member.relations?.father_id)
-  const mother = allMembers.find(m => m.id === member.relations?.mother_id)
-  const spouse = allMembers.find(m => m.id === member.relations?.spouse_id)
+  const father = allMembers.find(m => m.id === member.relations?.fatherId)
+  const mother = allMembers.find(m => m.id === member.relations?.motherId)
+  const spouse = allMembers.find(m => m.id === member.relations?.spouseId)
   const children = allMembers.filter(m =>
-    member.relations?.children_ids?.includes(m.id)
+    member.relations?.childrenIds?.includes(m.id)
   )
 
   const hasFamily = !!father || !!mother || !!spouse || children.length > 0
