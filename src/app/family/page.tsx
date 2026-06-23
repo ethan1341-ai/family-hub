@@ -68,7 +68,9 @@ export default function FamilyPage() {
   }
 
   // 尋找根節點（沒有父母的人）
-  const rootMembers = members.filter(m => !m.relations?.fatherId && !m.relations?.motherId)
+  const rootMembers = members.filter(
+    m => !m.relations?.fatherId && !m.relations?.motherId
+  )
 
   return (
     <div className="container py-8">
