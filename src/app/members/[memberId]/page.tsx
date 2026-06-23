@@ -268,11 +268,11 @@ export default function EditMemberPage() {
                   </div>
                 )}
 
-                {member.line_id && (
+                {member.lineId && (
                   <div>
                     <p className="text-sm text-gray-600 mb-1">LINE ID</p>
                     <p className="text-lg font-semibold text-gray-900">
-                      {member.line_id}
+                      {member.lineId}
                     </p>
                   </div>
                 )}
